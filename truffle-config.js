@@ -28,7 +28,7 @@ console.log(mnemonic);
 
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 const bscProvider = new HDWalletProvider({
-  privateKeys: [''],
+  privateKeys: ['privkey'],
   providerOrUrl: 'https://data-seed-prebsc-2-s2.binance.org:8545'
 })
 

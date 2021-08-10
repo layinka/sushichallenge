@@ -22,14 +22,14 @@ contract Swapper {
     _;
   }
 
-  function swap(address tokenInAddress,address tokenOutAddress, uint amount,uint amountOutMin, address to) public  { // public restricted
+
+  function swap(address tokenInAddress,address tokenOutAddress, uint amount, address to) public  { // public restricted
     require(amount > 0, 'ZERO_AMOUNT');
     IUniswapV2ERC20 tokenIn = IUniswapV2ERC20(tokenInAddress);
     IUniswapV2ERC20 tokenOut = IUniswapV2ERC20(tokenOutAddress);
     // transfer tokenIn to smart Contract
-    uint amountIn = amount * 10 ** tokenIn.decimals();
+    uint amountIn =  amount ;//* 10 ** tokenIn.decimals();
 
-    
     require(tokenIn.transferFrom(msg.sender, address(this), amountIn), 'transferFrom failed.');
 
     //then approve
@@ -45,7 +45,7 @@ contract Swapper {
         0, // amountOutMin
         path,
         to,
-        block.timestamp + 15 // deadline
+        block.timestamp // + 15 // deadline
     );
     
     
